@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import NavItem from '../navitem'
 
 function NavBar () {
   const activeStyle = 'underline underline-offset-4'
@@ -7,86 +7,60 @@ function NavBar () {
     <nav className='flex justify-between items-center fixed z-10 w-full py-5 px-8 text-sm font-light'>
       <ul className='flex items-center gap-3'>
         <li className='font-semibold text-lg'>
-          <NavLink to='/'>
+          <NavItem to='/'>
             Shopi
-          </NavLink>
+          </NavItem>
         </li>
         <li>
-          <NavLink
-            to='/'
-            className={({ isActive }) => isActive ? activeStyle : undefined }
-          >
+          <NavItem to='/' activeStyle={activeStyle}>
             All
-          </NavLink>
+          </NavItem>
         </li>
         <li>
-          <NavLink
-            to='/clothes'
-            className={({ isActive }) => isActive ? activeStyle : undefined }
-          >
+          <NavItem to='/clothes' activeStyle={activeStyle}>
             Clothes
-          </NavLink>
+          </NavItem>
         </li>
         <li>
-          <NavLink
-            to='/electronics'
-            className={({ isActive }) => isActive ? activeStyle : undefined }
-          >
+          <NavItem to='/electronics' activeStyle={activeStyle}>
             Electronics
-          </NavLink>
+          </NavItem>
         </li>
         <li>
-          <NavLink
-            to='/furnitures'
-            className={({ isActive }) => isActive ? activeStyle : undefined }
-          >
+          <NavItem to='/furnitures' activeStyle={activeStyle}>
             Furnitures
-          </NavLink>
+          </NavItem>
         </li>
         <li>
-          <NavLink
-            to='/toys'
-            className={({ isActive }) => isActive ? activeStyle : undefined }
-          >
+          <NavItem to='/toys' activeStyle={activeStyle}>
             Toys
-          </NavLink>
+          </NavItem>
         </li>
         <li>
-          <NavLink
-            to='/others'
-            className={({ isActive }) => isActive ? activeStyle : undefined }
-          >
+          <NavItem to='/others' activeStyle={activeStyle}>
             Others
-          </NavLink>
+          </NavItem>
         </li>
       </ul>
+
       <ul className='flex items-center gap-3'>
         <li className='text-black/60'>
           yoos@correo.com
         </li>
         <li>
-          <NavLink
-            to='/orders'
-            className={({ isActive }) => isActive ? activeStyle : undefined }
-          >
+          <NavItem to='/orders' activeStyle={activeStyle}>
             Orders
-          </NavLink>
+          </NavItem>
         </li>
         <li>
-          <NavLink
-            to='/account'
-            className={({ isActive }) => isActive ? activeStyle : undefined }
-          >
+          <NavItem to='/account' activeStyle={activeStyle}>
             Account
-          </NavLink>
+          </NavItem>
         </li>
         <li>
-          <NavLink
-            to='/signin'
-            className={({ isActive }) => isActive ? activeStyle : undefined }
-          >
+          <NavItem to='/signin' activeStyle={activeStyle}>
             Sign In
-          </NavLink>
+          </NavItem>
         </li>
         <li>
           🛒 0
