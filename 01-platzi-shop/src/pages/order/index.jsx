@@ -1,10 +1,10 @@
+import Layout from '../../components/layout'
+
 function Order() {
   return (
-    <>
-      <div className="text-3xl font-bold underline">
-        <p>Order</p>
-      </div>
-    </>
+    <Layout>
+      Order
+    </Layout>
   )
 }
 

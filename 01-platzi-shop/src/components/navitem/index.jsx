@@ -13,7 +13,7 @@ function NavItem ({ children, to, activeStyle }) {
 }
 
 NavItem.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.node,
   to: PropTypes.string,
   activeStyle: PropTypes.string
 }
