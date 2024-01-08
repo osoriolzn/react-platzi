@@ -1,6 +1,10 @@
+import { useContext } from 'react'
+import { ShoppingContext } from '../../context'
 import NavItem from '../navitem'
 
 function NavBar () {
+  const { count } = useContext(ShoppingContext)
+
   const activeStyle = 'underline underline-offset-4'
 
   return (
@@ -63,7 +67,7 @@ function NavBar () {
           </NavItem>
         </li>
         <li>
-          🛒 0
+          🛒 {count}
         </li>
       </ul>
     </nav>

@@ -1,6 +1,14 @@
 import PropTypes from 'prop-types'
+import { useContext } from 'react'
+import { ShoppingContext } from '../../context'
 
-function Card ({data}) {
+function Card ({ data }) {
+  const { count, setCount } = useContext(ShoppingContext)
+
+  const headleClick = () => {
+    setCount(count + 1)
+  }
+  
   return (
     <div className='bg-white cursor-pointer w-56 h-60 rounded-lg'>
       <figure className='relative mb-2 w-full h-4/5'>
@@ -10,9 +18,12 @@ function Card ({data}) {
           src={data.images[0]}
           alt={data.description}
         />
-        <div className='absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1'>
+        <button
+          className='absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1'
+          onClick={headleClick}
+        >
           +
-        </div>
+        </button>
       </figure>
 
       <p className='flex justify-between'>
