@@ -1,3 +1,5 @@
+import { PlusIcon } from '@heroicons/react/24/solid'
+
 import PropTypes from 'prop-types'
 import { useContext } from 'react'
 import { ShoppingContext } from '../../context'
@@ -22,7 +24,7 @@ function Card ({ data }) {
           className='absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1'
           onClick={headleClick}
         >
-          +
+          <PlusIcon />
         </button>
       </figure>
 
