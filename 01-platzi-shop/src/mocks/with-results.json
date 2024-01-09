@@ -1015,45 +1015,5 @@
       "creationAt": "2024-01-07T17:18:40.000Z",
       "updatedAt": "2024-01-07T17:18:40.000Z"
     }
-  },
-  {
-    "id": 52,
-    "title": "w/IPhone pro max",
-    "price": 1290,
-    "description": "wqeqw wq ewe e wee wee. wq ewe ewe e wee wee we e wee we e qw",
-    "images": [
-      "https://api.escuelajs.co/api/v1/files/baa10.png",
-      "https://api.escuelajs.co/api/v1/files/80c6.png",
-      "https://api.escuelajs.co/api/v1/files/679c.png"
-    ],
-    "creationAt": "2024-01-07T17:51:25.000Z",
-    "updatedAt": "2024-01-07T17:51:25.000Z",
-    "category": {
-      "id": 6,
-      "name": "w/Electoniec",
-      "image": "https://api.escuelajs.co/api/v1/files/77c10.png",
-      "creationAt": "2024-01-07T17:51:01.000Z",
-      "updatedAt": "2024-01-07T17:51:01.000Z"
-    }
-  },
-  {
-    "id": 53,
-    "title": "w/MackBook Air",
-    "price": 1390,
-    "description": "3212 sassafras’s sad as das d add as d as das d add as d sad",
-    "images": [
-      "https://api.escuelajs.co/api/v1/files/e29c.png",
-      "https://api.escuelajs.co/api/v1/files/6f87.png",
-      "https://api.escuelajs.co/api/v1/files/7197.png"
-    ],
-    "creationAt": "2024-01-07T17:51:51.000Z",
-    "updatedAt": "2024-01-07T17:51:51.000Z",
-    "category": {
-      "id": 6,
-      "name": "w/Electoniec",
-      "image": "https://api.escuelajs.co/api/v1/files/77c10.png",
-      "creationAt": "2024-01-07T17:51:01.000Z",
-      "updatedAt": "2024-01-07T17:51:01.000Z"
-    }
   }
 ]
