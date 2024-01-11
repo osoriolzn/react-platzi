@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import Layout from '../../components/layout'
 import Card from '../../components/card'
-import ProductDetail from '../../components/productdetail'
+import ProductDetail from '../../components/product-detail'
 
 import responseItem from '../../mocks/with-results.json'
 // import withoutResult from '../../mocks/not-results.json'

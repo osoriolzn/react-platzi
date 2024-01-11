@@ -5,17 +5,30 @@ import { useContext } from 'react'
 import { ShoppingContext } from '../../context'
 
 function Card ({ data }) {
-  const { count, setCount, openProductDetail, setProductToShow } = useContext(ShoppingContext)
-
-  const headleClickCount = () => {
-    setCount(count + 1)
-  }
-
+  const {
+    count,
+    setCount,
+    openProductDetail,
+    closeProductDetail,
+    openCheckoutSideMenu,
+    setProductToShow,
+    shoppingCarts,
+    setShoppingCarts
+  } = useContext(ShoppingContext)
+    
   const headleClickShowProduct = () => {
     openProductDetail()
     setProductToShow({data})
   }
   
+  const headleClickAddToCart = (event) => {
+    event.stopPropagation()
+    setCount(count + 1)
+    setShoppingCarts([...shoppingCarts, data])
+    openCheckoutSideMenu()
+    closeProductDetail()
+  }
+
   return (
     <div
       onClick={headleClickShowProduct}
@@ -30,7 +43,7 @@ function Card ({ data }) {
         />
         <button
           className='absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1'
-          onClick={headleClickCount}
+          onClick={(event) => headleClickAddToCart(event)}
         >
           <PlusIcon />
         </button>
