@@ -3,6 +3,7 @@ import { XMarkIcon } from '@heroicons/react/24/solid'
 import { useContext } from 'react'
 import { ShoppingContext } from '../../context'
 import OrderCard from '../../components/ordercard'
+import { totalPrice } from '../../utils'
 
 
 function CheckoutSideMenu () {
@@ -17,7 +18,7 @@ function CheckoutSideMenu () {
     <aside
       className={`${isCheckoutSideMenuOpen ? 'flex' : 'hidden'} flex-col fixed right-0 border border-black rounded-lg bg-white top-[68px] w-[360px] h-[calc(100vh-68px)] top`}
     >
-      <div className='flex justify-between items-center px-2'>
+      <div className='flex justify-between items-center pl-2 pr-6'>
         <h2 className='font-medium text-xl'>My Order</h2>
         <span onClick={closeCheckoutSideMenu}>
           <XMarkIcon className='h-6 w-6 rounded-full cursor-pointer text-white bg-[#09f]' />
@@ -37,6 +38,13 @@ function CheckoutSideMenu () {
             />
           ))
         }
+      </div>
+
+      <div className='pl-2 pr-6'>
+        <p className='flex justify-between items-center'>
+          <span className='font-light'>Total:</span>
+          <span className='font-medium'>${totalPrice(shoppingCarts)}</span>
+        </p>
       </div>
     </aside>
   )
