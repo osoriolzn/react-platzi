@@ -2,7 +2,6 @@ import PropTypes from 'prop-types'
 import { XMarkIcon } from '@heroicons/react/24/solid'
 
 function OrderCard ({ title, imageUrl, price }) {
-//   const { id, title, imageUrl, price } = props
   return (
     <div className='flex justify-between items-center pb-2'>
       <div className='flex items-center gap-2'>

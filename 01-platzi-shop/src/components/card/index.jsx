@@ -1,4 +1,4 @@
-import { PlusIcon } from '@heroicons/react/24/solid'
+import { PlusIcon, CheckIcon } from '@heroicons/react/24/solid'
 
 import PropTypes from 'prop-types'
 import { useContext } from 'react'
@@ -29,6 +29,30 @@ function Card ({ data }) {
     closeProductDetail()
   }
 
+  const renderIcon = (id) => {
+    const isInCart = shoppingCarts.filter(product => product.id === id).length > 0
+
+    if (isInCart) {
+      return (
+        <button
+          className='absolute top-0 right-0 flex justify-center items-center text-white bg-green-400 w-6 h-6 rounded-full m-2 p-1'
+          // onClick={(event) => headleClickAddToCart(event)}
+        >
+          <CheckIcon />
+        </button>
+      )
+    } else {
+      return (
+        <button
+          className='absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1'
+          onClick={(event) => headleClickAddToCart(event)}
+        >
+          <PlusIcon />
+        </button>
+      )
+    }
+  }
+
   return (
     <div
       onClick={headleClickShowProduct}
@@ -41,12 +65,7 @@ function Card ({ data }) {
           src={data.images[0]}
           alt={data.description}
         />
-        <button
-          className='absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1'
-          onClick={(event) => headleClickAddToCart(event)}
-        >
-          <PlusIcon />
-        </button>
+        {renderIcon(data.id)}
       </figure>
 
       <p className='flex justify-between'>
