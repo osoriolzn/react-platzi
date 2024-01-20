@@ -8,7 +8,6 @@ import Orders from '../orders'
 import SignIn from '../signin'
 import NavBar from '../../components/navbar'
 import CheckoutSideMenu from '../../components/checkout-side-menu'
-import './App.css'
 
 const AppRouters = () => {
   const routes = useRoutes([

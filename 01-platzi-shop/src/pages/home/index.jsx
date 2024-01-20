@@ -1,30 +1,28 @@
 import { ChevronDoubleUpIcon } from '@heroicons/react/24/solid'
 
-import { useState, useEffect } from 'react'
+import { useContext } from 'react'
+import { ShoppingContext } from '../../context'
 import Layout from '../../components/layout'
 import Card from '../../components/card'
 import ProductDetail from '../../components/product-detail'
 import './styles.css'
 
-import responseItem from '../../mocks/with-results.json'
-// import withoutResult from '../../mocks/not-results.json'
-
-// const URL = 'https://api.escuelajs.co/api/v1/products'
-
 function Home() {
-  const [items, setItems] = useState([])
-  
-  useEffect(() => {
-    const data = responseItem
-    setItems(data)
-    // fetch(URL)
-    //   .then(response => response.json())
-    //   .then(data => setItems(data))
-  }, [])
+  const { items, setSearch } = useContext(ShoppingContext)
 
   return (
     <Layout>
-      Home
+      <div className='flex items-center justify-center relative w-80 mb-2'>
+        <h1 className='font-medium text-xl'>Exclusive Products</h1>
+      </div>
+
+      <input
+        onChange={(event) => setSearch(event.target.value)}
+        className='rounded-lg border border-black w-80 p-2 mb-4'
+        type='text'
+        placeholder='Mouse, Laptop...'
+      />
+      
       <div className='grid grid-cols-4 gap-3 w-full max-w-screen-lg'>
         {
           items?.map(item => (
