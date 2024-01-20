@@ -20,19 +20,19 @@ export function ShoppingProvider ({ children }) {
   return (
     <ShoppingContext.Provider value={{
         count,
-        setCount,
+        order,
         isProductDetailOpen,
+        isCheckoutSideMenuOpen,
+        productToShow,
+        shoppingCarts,
         openProductDetail,
         closeProductDetail,
-        isCheckoutSideMenuOpen,
         openCheckoutSideMenu,
         closeCheckoutSideMenu,
-        productToShow,
+        setCount,
+        setOrder,
         setProductToShow,
-        shoppingCarts,
-        setShoppingCarts,
-        order,
-        setOrder
+        setShoppingCarts
       }}
     >
       {children}

@@ -1,7 +1,10 @@
+import { ChevronDoubleUpIcon } from '@heroicons/react/24/solid'
+
 import { useState, useEffect } from 'react'
 import Layout from '../../components/layout'
 import Card from '../../components/card'
 import ProductDetail from '../../components/product-detail'
+import './styles.css'
 
 import responseItem from '../../mocks/with-results.json'
 // import withoutResult from '../../mocks/not-results.json'
@@ -30,6 +33,9 @@ function Home() {
         }
       </div>
       <ProductDetail />
+      <a id='back-top' href='#top'>
+        <ChevronDoubleUpIcon className='h-6 w-6' />
+      </a>
     </Layout>
   )
 }

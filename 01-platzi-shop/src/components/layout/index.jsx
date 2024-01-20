@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types'
-import './styles.css'
 
 function Layout ({ children }) {
   return (
@@ -7,7 +6,6 @@ function Layout ({ children }) {
       <div className='flex flex-col items-center mt-20'>
         {children}
       </div>
-      <a id='back-top' href='#top'>Ir al inicio</a>
     </>
   )
 }

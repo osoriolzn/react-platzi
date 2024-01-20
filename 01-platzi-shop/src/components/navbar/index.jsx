@@ -69,7 +69,7 @@ function NavBar () {
           </NavItem>
         </li>
         <li className='flex items-center'>
-          <ShoppingCartIcon className='h-6 w-6' />
+          <ShoppingCartIcon className='h-6 w-6 text-[#09f]' />
           <div>
             {count}
           </div>
