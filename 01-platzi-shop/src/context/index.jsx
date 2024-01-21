@@ -10,6 +10,7 @@ import responseItem from '../mocks/with-results.json'
 
 export function ShoppingProvider ({ children }) {
   const [items, setItems] = useState([])
+  const [filteredItems, setFilteredItems] = useState([])
   const [count, setCount] = useState(0)
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false)
   const [isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen] = useState(false)
@@ -26,6 +27,14 @@ export function ShoppingProvider ({ children }) {
     //   .then(data => setItems(data))
   }, [])
 
+  const filteredProducts = (items, search) => {
+    return items?.filter(item => item.title.toLowerCase().includes(search.toLowerCase()))
+  }
+
+  useEffect(() => {
+    if (search) setFilteredItems(filteredProducts(items, search))
+  }, [items, search])
+  
   const openProductDetail = () => setIsProductDetailOpen(true)
   const closeProductDetail = () => setIsProductDetailOpen(false)
 
@@ -35,6 +44,7 @@ export function ShoppingProvider ({ children }) {
   return (
     <ShoppingContext.Provider value={{
         items,
+        filteredItems,
         count,
         order,
         isProductDetailOpen,
@@ -43,6 +53,7 @@ export function ShoppingProvider ({ children }) {
         shoppingCarts,
         search,
         setItems,
+        setFilteredItems,
         setCount,
         setOrder,
         setProductToShow,

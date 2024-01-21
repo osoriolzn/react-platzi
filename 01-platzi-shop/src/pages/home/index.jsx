@@ -8,7 +8,21 @@ import ProductDetail from '../../components/product-detail'
 import './styles.css'
 
 function Home() {
-  const { items, setSearch } = useContext(ShoppingContext)
+  const { items, search, setSearch, filteredItems } = useContext(ShoppingContext)
+
+  const renderView = () => {
+    const itemsToRender = search?.length > 0
+      ? filteredItems
+      : items
+
+    if (itemsToRender?.length > 0) {
+      return itemsToRender.map(item => (
+        <Card key={item.id} data={item} />
+      ))
+    } else {
+      return <p>No Results Found</p>
+    }
+  }
 
   return (
     <Layout>
@@ -24,11 +38,7 @@ function Home() {
       />
       
       <div className='grid grid-cols-4 gap-3 w-full max-w-screen-lg'>
-        {
-          items?.map(item => (
-            <Card key={item.id} data={item} />
-          ))
-        }
+        {renderView()}
       </div>
       <ProductDetail />
       <a id='back-top' href='#top'>

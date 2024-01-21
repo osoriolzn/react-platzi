@@ -36,7 +36,6 @@ function Card ({ data }) {
       return (
         <button
           className='absolute top-0 right-0 flex justify-center items-center text-white bg-green-400 w-6 h-6 rounded-full m-2 p-1'
-          // onClick={(event) => headleClickAddToCart(event)}
         >
           <CheckIcon />
         </button>
