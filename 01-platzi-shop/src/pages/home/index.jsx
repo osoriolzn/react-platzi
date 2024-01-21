@@ -8,10 +8,10 @@ import ProductDetail from '../../components/product-detail'
 import './styles.css'
 
 function Home() {
-  const { items, search, setSearch, filteredItems } = useContext(ShoppingContext)
+  const { items, search, searchCategory, setSearch, filteredItems } = useContext(ShoppingContext)
 
   const renderView = () => {
-    const itemsToRender = search?.length > 0
+    const itemsToRender = search || searchCategory
       ? filteredItems
       : items
 

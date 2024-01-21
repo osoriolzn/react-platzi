@@ -5,7 +5,7 @@ import { ShoppingContext } from '../../context'
 import NavItem from '../navitem'
 
 function NavBar () {
-  const { count } = useContext(ShoppingContext)
+  const { count, setSearchCategory } = useContext(ShoppingContext)
 
   const activeStyle = 'underline underline-offset-4'
 
@@ -22,27 +22,27 @@ function NavBar () {
             All
           </NavItem>
         </li>
-        <li>
+        <li onClick={() => setSearchCategory('clothes')}>
           <NavItem to='/clothes' activeStyle={activeStyle}>
             Clothes
           </NavItem>
         </li>
-        <li>
+        <li onClick={() => setSearchCategory('electronics')}>
           <NavItem to='/electronics' activeStyle={activeStyle}>
             Electronics
           </NavItem>
         </li>
-        <li>
+        <li onClick={() => setSearchCategory('furnitures')}>
           <NavItem to='/furnitures' activeStyle={activeStyle}>
             Furnitures
           </NavItem>
         </li>
-        <li>
+        <li onClick={() => setSearchCategory('toys')}>
           <NavItem to='/toys' activeStyle={activeStyle}>
             Toys
           </NavItem>
         </li>
-        <li>
+        <li onClick={() => setSearchCategory('others')}>
           <NavItem to='/others' activeStyle={activeStyle}>
             Others
           </NavItem>

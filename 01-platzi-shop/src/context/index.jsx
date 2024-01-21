@@ -18,6 +18,7 @@ export function ShoppingProvider ({ children }) {
   const [shoppingCarts, setShoppingCarts] = useState([])
   const [order, setOrder] = useState([])
   const [search, setSearch] = useState('')
+  const [searchCategory, setSearchCategory] = useState('')
   
   useEffect(() => {
     const data = responseItem
@@ -27,13 +28,38 @@ export function ShoppingProvider ({ children }) {
     //   .then(data => setItems(data))
   }, [])
 
-  const filteredProducts = (items, search) => {
+  const filteredTitle = (items, search) => {
     return items?.filter(item => item.title.toLowerCase().includes(search.toLowerCase()))
   }
 
+  const filteredCaregory = (items, searchCategory) => {
+    return items?.filter(item => item.category.name.toLowerCase().includes(searchCategory.toLowerCase()))
+  }
+
+  const filter = (searchType, items, search, searchCategory) => {
+    if (!searchType) {
+      return items
+    }
+
+    if (searchType === 'TITLE') {
+      return filteredTitle(items, search)
+    }
+
+    if (searchType === 'CATEGORY') {
+      return filteredCaregory(items, searchCategory)
+    }
+
+    if (searchType === 'TITLE_AND_CATEGORY') {
+      return filteredCaregory(items, searchCategory).filter(item => item.title.toLowerCase().includes(search.toLowerCase()))
+    }    
+  }
+
   useEffect(() => {
-    if (search) setFilteredItems(filteredProducts(items, search))
-  }, [items, search])
+    if (!search && !searchCategory) setFilteredItems(filter(null, items, search, searchCategory))
+    if (search && !searchCategory) setFilteredItems(filter('TITLE', items, search, searchCategory))
+    if (!search && searchCategory) setFilteredItems(filter('CATEGORY',items, search, searchCategory))
+    if (search && searchCategory) setFilteredItems(filter('TITLE_AND_CATEGORY',items, search, searchCategory))
+  }, [items, search, searchCategory])
   
   const openProductDetail = () => setIsProductDetailOpen(true)
   const closeProductDetail = () => setIsProductDetailOpen(false)
@@ -52,6 +78,7 @@ export function ShoppingProvider ({ children }) {
         productToShow,
         shoppingCarts,
         search,
+        searchCategory,
         setItems,
         setFilteredItems,
         setCount,
@@ -59,6 +86,7 @@ export function ShoppingProvider ({ children }) {
         setProductToShow,
         setShoppingCarts,
         setSearch,
+        setSearchCategory,
         openProductDetail,
         closeProductDetail,
         openCheckoutSideMenu,
