@@ -6,8 +6,6 @@ import { ShoppingContext } from '../../context'
 
 function Card ({ data }) {
   const {
-    count,
-    setCount,
     openProductDetail,
     closeProductDetail,
     openCheckoutSideMenu,
@@ -23,7 +21,6 @@ function Card ({ data }) {
   
   const headleClickAddToCart = (event) => {
     event.stopPropagation()
-    setCount(count + 1)
     setShoppingCarts([...shoppingCarts, data])
     openCheckoutSideMenu()
     closeProductDetail()

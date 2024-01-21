@@ -5,19 +5,25 @@ import { ShoppingContext } from '../../context'
 import NavItem from '../navitem'
 
 function NavBar () {
-  const { count, setSearchCategory } = useContext(ShoppingContext)
+  const { shoppingCarts, setFilteredItems, setSearch, setSearchCategory } = useContext(ShoppingContext)
 
   const activeStyle = 'underline underline-offset-4'
+
+  const resetFiltered = () => {
+    setFilteredItems([])
+    setSearch('')
+    setSearchCategory('')
+  }
 
   return (
     <nav className='flex justify-between items-center bg-white fixed z-10 top-0 w-full py-5 px-8 text-sm font-light'>
       <ul className='flex items-center gap-3'>
-        <li className='font-semibold text-lg'>
+        <li onClick={resetFiltered} className='font-semibold text-lg'>
           <NavItem to='/' activeStyle=''>
             Shopi
           </NavItem>
         </li>
-        <li>
+        <li onClick={resetFiltered}>
           <NavItem to='/' activeStyle={activeStyle}>
             All
           </NavItem>
@@ -71,7 +77,7 @@ function NavBar () {
         <li className='flex items-center'>
           <ShoppingCartIcon className='h-6 w-6 text-[#09f]' />
           <div>
-            {count}
+            {shoppingCarts.length}
           </div>
         </li>
       </ul>

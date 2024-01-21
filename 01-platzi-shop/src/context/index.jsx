@@ -11,7 +11,6 @@ import responseItem from '../mocks/with-results.json'
 export function ShoppingProvider ({ children }) {
   const [items, setItems] = useState([])
   const [filteredItems, setFilteredItems] = useState([])
-  const [count, setCount] = useState(0)
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false)
   const [isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen] = useState(false)
   const [productToShow, setProductToShow] = useState({})
@@ -71,7 +70,6 @@ export function ShoppingProvider ({ children }) {
     <ShoppingContext.Provider value={{
         items,
         filteredItems,
-        count,
         order,
         isProductDetailOpen,
         isCheckoutSideMenuOpen,
@@ -81,7 +79,6 @@ export function ShoppingProvider ({ children }) {
         searchCategory,
         setItems,
         setFilteredItems,
-        setCount,
         setOrder,
         setProductToShow,
         setShoppingCarts,
