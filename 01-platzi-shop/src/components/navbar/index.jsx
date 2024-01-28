@@ -1,13 +1,12 @@
-import { ShoppingCartIcon } from '@heroicons/react/24/solid'
-
 import { useContext } from 'react'
 import { ShoppingContext } from '../../context'
 import NavItem from '../navitem'
+import ShoppingCart from '../shopping-cart'
 
 function NavBar () {
   const {
-    shoppingCarts,
     signOut,
+    account,
     setFilteredItems,
     setSearch,
     setSearchCategory,
@@ -15,10 +14,15 @@ function NavBar () {
   } = useContext(ShoppingContext)
 
   const activeStyle = 'underline underline-offset-4'
-
   const signOutLS = localStorage.getItem('sign-out')
   const parsedSignOut = JSON.parse(signOutLS)
   const isUserSigOut = signOut || parsedSignOut
+
+  const accountLS = localStorage.getItem('account')
+  const parsedAccount = JSON.parse(accountLS)
+  const noAccountInLocalStorage = parsedAccount ? Object.keys(parsedAccount).length === 0 : true
+  const noAccountInLocalState = account ? Object.keys(account).length === 0 : true
+  const hasUserAnAccount = !noAccountInLocalStorage || !noAccountInLocalState
 
   const handleResetFiltered = () => {
     setFilteredItems([])
@@ -33,19 +37,11 @@ function NavBar () {
   }
 
   const renderView = () => {
-    if (isUserSigOut) {
-      return (
-        <li onClick={handleSignOut}>
-          <NavItem to='/sign-in' activeStyle={activeStyle}>
-            Sign In
-          </NavItem>
-        </li>
-      )
-    } else {
+    if (hasUserAnAccount && !isUserSigOut) {
       return (
         <>
           <li className='text-black/60'>
-          yoos@correo.com
+          {parsedAccount.name}
           </li>
           <li>
             <NavItem to='/orders' activeStyle={activeStyle}>
@@ -64,6 +60,14 @@ function NavBar () {
           </li>
         </>
       )
+    } else {
+      return (
+        <li onClick={handleSignOut}>
+          <NavItem to='/sign-in' activeStyle={activeStyle}>
+            Sign In
+          </NavItem>
+        </li>
+      )
     }
   }
 
@@ -71,7 +75,7 @@ function NavBar () {
     <nav className='flex justify-between items-center bg-white fixed z-10 top-0 w-full py-5 px-8 text-sm font-light'>
       <ul className='flex items-center gap-3'>
         <li onClick={handleResetFiltered} className='font-semibold text-lg'>
-          <NavItem to='/' activeStyle=''>
+          <NavItem to={`${isUserSigOut ? '/sign-in' : '/'}`} activeStyle=''>
             Shopi
           </NavItem>
         </li>
@@ -110,10 +114,7 @@ function NavBar () {
       <ul className='flex items-center gap-3'>
         {renderView()}
         <li className='flex items-center'>
-          <ShoppingCartIcon className='h-6 w-6 text-[#09f]' />
-          <div>
-            {shoppingCarts.length}
-          </div>
+          <ShoppingCart />
         </li>
       </ul>
     </nav>
