@@ -31,6 +31,8 @@ function Home() {
       </div>
 
       <input
+        id='search'
+        name='search'
         value={search}
         onChange={(event) => setSearch(event.target.value)}
         className='rounded-lg border border-black w-80 p-2 mb-4'

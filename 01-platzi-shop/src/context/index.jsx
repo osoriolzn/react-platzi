@@ -18,6 +18,8 @@ export function ShoppingProvider ({ children }) {
   const [order, setOrder] = useState([])
   const [search, setSearch] = useState('')
   const [searchCategory, setSearchCategory] = useState('')
+  const [account, setAccount] = useState({})
+  const [signOut, setSignOut] = useState(false)
   
   useEffect(() => {
     const data = responseItem
@@ -31,7 +33,7 @@ export function ShoppingProvider ({ children }) {
     return items?.filter(item => item.title.toLowerCase().includes(search.toLowerCase()))
   }
 
-  const filteredCaregory = (items, searchCategory) => {
+  const filteredCategory = (items, searchCategory) => {
     return items?.filter(item => item.category.name.toLowerCase().includes(searchCategory.toLowerCase()))
   }
 
@@ -45,11 +47,11 @@ export function ShoppingProvider ({ children }) {
     }
 
     if (searchType === 'CATEGORY') {
-      return filteredCaregory(items, searchCategory)
+      return filteredCategory(items, searchCategory)
     }
 
     if (searchType === 'TITLE_AND_CATEGORY') {
-      return filteredCaregory(items, searchCategory).filter(item => item.title.toLowerCase().includes(search.toLowerCase()))
+      return filteredCategory(items, searchCategory).filter(item => item.title.toLowerCase().includes(search.toLowerCase()))
     }    
   }
 
@@ -77,6 +79,8 @@ export function ShoppingProvider ({ children }) {
         shoppingCarts,
         search,
         searchCategory,
+        account,
+        signOut,
         setItems,
         setFilteredItems,
         setOrder,
@@ -84,6 +88,8 @@ export function ShoppingProvider ({ children }) {
         setShoppingCarts,
         setSearch,
         setSearchCategory,
+        setAccount,
+        setSignOut,
         openProductDetail,
         closeProductDetail,
         openCheckoutSideMenu,
