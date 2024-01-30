@@ -41,7 +41,7 @@ function NavBar () {
       return (
         <>
           <li className='text-black/60'>
-          {parsedAccount.name}
+          {parsedAccount?.name}
           </li>
           <li>
             <NavItem to='/orders' activeStyle={activeStyle}>
@@ -94,7 +94,7 @@ function NavBar () {
             Electronics
           </NavItem>
         </li>
-        <li onClick={() => setSearchCategory('furnitures')}>
+        <li onClick={() => setSearchCategory('furniture')}>
           <NavItem to='/furnitures' activeStyle={activeStyle}>
             Furnitures
           </NavItem>
