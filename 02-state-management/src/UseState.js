@@ -3,24 +3,27 @@ import { useEffect, useState } from "react";
 const SECURITY_CODE = '141987';
 
 function UseState({ name }) {
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [value, setValue] = useState('');
-
+  const [state, setState] = useState({
+    error: false,
+    loading: false,
+    value: ''
+  });
+  
   useEffect(() => {
-    if (loading) {
-      setError(false);
+    if (state.loading) {
+      setState({...state, error: false});
       setTimeout(() => {
-        if (value === SECURITY_CODE) {
-          setLoading(false);
+        if (state.value === SECURITY_CODE) {
+          console.log("Validate Code");
+          setState({...state, error: false, loading: false});
         } else {
-          setError(true);
+          console.log("Code not valid");
+          setState({...state, error: true, loading: false});
         }
-        setLoading(false);
       }, 3000);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loading]);
+  }, [state.loading]);
 
   return (
     <div>
@@ -28,18 +31,18 @@ function UseState({ name }) {
       <p>Escribe el código de seguridad</p>
       <input
         placeholder="148632"
-        value={value}
+        value={state.value}
         onChange={(event) => {
-          setValue(event.target.value);
+          setState({...state, value: event.target.value});
         }}
       />
-      <button onClick={() => setLoading(!loading)}>
+      <button onClick={() => setState({...state, loading: true})}>
         Comprobar
       </button>
-      {error && (
+      {state.error && (
         <p>Error: Código incorrecto</p>
       )}
-      {loading && (
+      {state.loading && (
         <p>Cargando...</p>
       )}
     </div>
